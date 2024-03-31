@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/base_layout.astro';
+const pageTitle = 'About Us';
+
+const creators = [
+	{
+		nickname: 'Kitten',
+		pronouns: ['She/Her'],
+		biography:
+			'The engineer and luthier who crafts and designs our guitar-oriented products. With a background in a successful lutheir shop and a passion for electronics, her expertise and creativity is the heart of the BeNT partnership. ',
+	},
+	{
+		nickname: 'Fox',
+		pronouns: ['It/Its', 'They/Them', 'She/Her'],
+		biography:
+			"The mechanic and synthesizer guru who crafts and deesigns our synthesizer products. It's background in aircraft maintainence and repair helps provide input on creating high quality products with practical applications; helping ensure that our products are up to the needs and requirements of working musicians and mad scientists.",
+	},
+	{
+		nickname: 'Puppy',
+		pronouns: ['She/Her', 'They/Them'],
+		biography:
+			'Our marketing lead and IT specialist. While not crafting our products, Puppy has the job of ensuring that our products fit what musicians need and getting the word out.',
+	},
+];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+	<h2>Mad Scientists and Musicians creating <em>"Better Noise Toys"</em>!</h2>
+
+	<p>
+		Better Noise Toys (AKA: BeNT) is a collective and partnership based around musicians who want
+		new toys. Not just the same clones of Tube Screamers, Telecasters, or Moog Synths that everybody
+		else creates. So we create items that speak to us that don't exist already and speak to us
+		creatively. And we want to enable others to be creative as well! So we provide schematics,
+		jumpers, and headers to help others take what we have created and turn it into brand new items
+		as well!
+	</p>
+
+	<h2>Who We Are</h2>
+	<p>
+		Currently we'll be keeping ourselves private and nameless, but the team is founded by three
+		women and non-binary folk;
+	</p>
+	<ul>
+		{
+			creators.map((c) => (
+				<li>
+					<strong>{c.nickname}</strong> (<em>{c.pronouns}</em>) — {c.biography}
+				</li>
+			))
+		}
+	</ul>
+</baseLayout>

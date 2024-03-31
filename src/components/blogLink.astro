@@ -1,0 +1,5 @@
+---
+const { url, frontmatter } = Astro.props;
+---
+
+<li><a href={url}>{frontmatter.pubDate.toString().slice(0,10)} — {frontmatter.title}</a></li>

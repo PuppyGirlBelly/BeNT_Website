@@ -1,0 +1,45 @@
+---
+import BaseLayout from './base_layout.astro';
+import { fade } from 'astro:transitions';
+const { frontmatter } = Astro.props;
+const postTitle = frontmatter.title;
+const pageTitle = `${postTitle} - Blog`;
+---
+
+<BaseLayout pageTitle={pageTitle} themeColor={frontmatter.themeColor}>
+	<p>
+		<em>Written by: {frontmatter.author}</em>
+		<br />
+		<em>Published: {frontmatter.pubDate.toString().slice(0, 10)}</em>
+	</p>
+	<h2>{frontmatter.description}</h2>
+	{frontmatter.image && <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />}
+	<div class="tags">
+        <p><strong>Tags:</strong></p>
+		{
+			frontmatter.tags.map((tag: string) => (
+				<p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+			))
+		}
+	</div>
+	<slot />
+</BaseLayout>
+<style>
+  a {
+    color: #00539F;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: .5em;
+    padding: .5em 1em;
+    font-size: 1.15em;
+    background-color: #F8FCFD;
+  }
+</style>
