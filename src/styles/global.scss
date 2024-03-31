@@ -1,0 +1,68 @@
+$light: #fffcf2;
+$light-mid: #c5bacc;
+$dark-mid: #3f3940;
+$dark: #252422;
+$weezer-blue: #009cbd;
+
+html {
+	background-color: $light;
+	color: $dark;
+	font-family: sans-serif;
+}
+
+body {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 80ch;
+	padding: 1rem;
+	line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: $dark;
+}
+
+header {
+    a {
+        color: $dark;
+    }
+}
+
+main a, footer a {
+    color: $weezer-blue;
+}
+
+html.dark {
+	background-color: $dark;
+	color: $light;
+
+    header {
+        a {
+            color: $light;
+        }
+    }
+
+	.nav-links {
+		a {
+			color: $light;
+		}
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: $light;
+	}
+
+	.logo {
+		background-image: url('../../public/logo//logo_500_light.png');
+	}
+}

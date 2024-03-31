@@ -13,7 +13,8 @@
     "@astrojs/check": "^0.5.10",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/ts-plugin": "^1.6.1",
-    "astro": "^4.5.12"
+    "astro": "^4.5.12",
+    "modern-normalize": "^2.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^7.4.0",
@@ -25,6 +26,7 @@
     "postcss-html": "^1.6.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
+    "sass": "^1.72.0",
     "stylelint": "^16.3.1",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-standard": "^36.0.0",

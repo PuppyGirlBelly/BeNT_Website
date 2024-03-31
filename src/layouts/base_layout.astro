@@ -2,7 +2,8 @@
 import { ViewTransitions } from "astro:transitions";
 import Header from '../components/header.astro';
 import Footer from '../components/footer.astro';
-import '../styles/global.css';
+import 'modern-normalize/modern-normalize.css';
+import '../styles/global.scss';
 let { pageTitle, themeColor } = Astro.props;
 themeColor = themeColor || '#009CBD';
 ---
@@ -10,9 +11,10 @@ themeColor = themeColor || '#009CBD';
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+        <meta name="theme-color" content="{theme-color}" />
 		<title>{pageTitle} - Better Noise Toys</title>
         <ViewTransitions />
 		<style define:vars={ {themeColor} }>
@@ -23,10 +25,12 @@ themeColor = themeColor || '#009CBD';
 		</style>
 	</head>
 	<body>
-		<Header />
-		<h1 transition:animate="slide">{pageTitle}</h1>
-		<slot />
-		<Footer />
+		<Header themeColor={themeColor} />
+		<h1>{pageTitle}</h1>
+        <main>
+            <slot />
+        </main>
+		<Footer themeColor={themeColor} />
 		<script>
 			import '../scripts/menu.js';
 		</script>

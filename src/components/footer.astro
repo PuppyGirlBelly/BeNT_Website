@@ -1,16 +1,29 @@
 ---
-// const { themeColor } = Astro.props;
+const { themeColor } = Astro.props;
 // import Social from './social.astro';
 ---
-<style>
-    footer {
-        display: flex;
-        gap: 1rem;
-        margin-top: 2rem;
-    }
-</style>
 
 <footer>
-    <p>2024 © Better Noise Toys</p>
-    <!-- <Social themeColor={themeColor} platform="reverb" username="Better_Noise_Toys" /> -->
+	<p>
+		Copyright © 2024 Better Noise Toys
+		<span class="divider"></span>
+		Website created with <a href="https://astro.build/">Astro</a>
+	</p>
+	<!-- <Social themeColor={themeColor} platform="reverb" username="Better_Noise_Toys" /> -->
 </footer>
+
+<style define:vars={{ themeColor }}>
+	footer {
+		display: flex;
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	.divider {
+		display: inline-block;
+		width: 0.15em;
+		height: 1.5em;
+		background-color: var(--themeColor);
+        margin: 0 0.5em -0.4em 0.5em;
+	}
+</style>

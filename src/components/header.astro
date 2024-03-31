@@ -1,12 +1,169 @@
 ---
-import Hamburger from "./hamburger.astro";
-import Navigation from "./navigation.astro";
-import ThemeIcon from "./ThemeIcon.astro";
+import ThemeIcon from './ThemeIcon.astro';
+const { themeColor } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // Removes the first "/"
+// import '../styles/components/header.scss';
 ---
+
 <header>
-    <nav>
-        <Hamburger />
-        <ThemeIcon />
-        <Navigation />
-    </nav>
+	<nav>
+		<div class="hamburger">
+			<span class="line"></span>
+			<span class="line"></span>
+			<span class="line"></span>
+		</div>
+
+		<div class="mobile-logo logo"></div>
+
+		<div class="nav-links">
+			<a class={currentPath === '' ? 'active desktop-logo logo' : 'desktop-logo logo'} href="/">
+				Home
+			</a>
+			<a class={currentPath === 'toys' ? 'active' : ''} href="/toys">Toys</a>
+			<a class={currentPath === 'blog' ? 'active' : ''} href="/blog">Blog</a>
+			<a class={currentPath === 'about' ? 'active' : ''} href="/about">About Us</a>
+		</div>
+
+		<div class="container">
+			<ThemeIcon />
+		</div>
+	</nav>
 </header>
+
+<style define:vars={{ themeColor }}>
+	header {
+		position: relative;
+		max-width: 80ch;
+	}
+
+	.hamburger {
+		height: 3em;
+		width: 3em;
+		padding: 1.25em 1.25em;
+        margin-bottom: 1em;
+		cursor: pointer;
+	}
+
+	.line {
+		display: block;
+		width: 2.5em;
+		height: 0.25em;
+		margin: 0 0 0.5em 0;
+		background-color: var(--themeColor);
+		border-radius: 0.5em;
+	}
+
+	.nav-links {
+		width: 100%;
+		top: 5rem;
+		left: 48px;
+		display: none;
+		margin: 0;
+        border-bottom: 0.2em solid var(--themeColor);
+
+		a {
+			display: block;
+			text-align: center;
+			padding: 10px 0;
+			text-decoration: none;
+			font-size: 1.2rem;
+			font-weight: bold;
+			text-transform: uppercase;
+            transition: background-color 0.2s ease;
+
+			&:hover,
+			&:focus {
+				background-color: var(--themeColor);
+				color: white;
+			}
+		}
+
+		.active {
+			background-color: var(--themeColor);
+			color: white;
+		}
+	}
+
+	.logo {
+		background-image: url('../../public/logo//logo_500_dark.png');
+		background-size: 90% auto;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+
+	.mobile-logo {
+		position: fixed;
+		width: 8em;
+		height: 4em;
+        top: 0.5em;
+        left: 50%;
+        transform: translateX(-50%);
+	}
+
+	.container {
+		position: absolute;
+		top: 1.25em;
+		right: 1.25em;
+	}
+
+	.expanded {
+		display: unset;
+	}
+
+	@media screen and (0 < width < 80ch) {
+		.nav-links {
+			.desktop-logo {
+				background-image: initial;
+			}
+		}
+	}
+
+	@media screen and (80ch < width) {
+		.nav-links {
+			margin-left: 2em;
+			display: block;
+			position: static;
+			width: auto;
+			background: none;
+
+			a {
+				display: inline-block;
+				padding: 0.75rem 1rem;
+                line-height: 2;
+			}
+
+			.desktop-logo {
+                margin-right: 1.5rem;
+				background-size: 90% auto;
+				background-repeat: no-repeat;
+				background-position: center;
+				color: transparent;
+				font-size: 2.5rem;
+                line-height: 1.35;
+
+				&:hover,
+				&:focus {
+					color: transparent;
+				}
+			}
+		}
+
+		.mobile-logo {
+            display: none;
+			background-image: initial;
+		}
+
+		.hamburger {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	document.addEventListener('astro:page-load', () => {
+		document.querySelector('.hamburger')?.addEventListener('click', () => {
+			document.querySelector('.nav-links')?.classList.toggle('expanded');
+		});
+	});
+</script>
