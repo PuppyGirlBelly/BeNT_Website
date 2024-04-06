@@ -33,9 +33,16 @@ const currentPath = pathname.slice(1); // Removes the first "/"
 
 <style define:vars={{ themeColor }}>
 	header {
-		position: relative;
+		position: sticky;
+        top: 0;
 		max-width: 80ch;
+		height: 6rem;
+        background-color: inherit;
 	}
+
+    nav {
+        background-color: inherit;
+    }
 
 	.hamburger {
 		height: 3em;
@@ -55,12 +62,12 @@ const currentPath = pathname.slice(1); // Removes the first "/"
 	}
 
 	.nav-links {
+        background-color: inherit;
 		width: 100%;
-		top: 5rem;
-		left: 48px;
-		display: none;
-		margin: 0;
-        border-bottom: 0.2em solid var(--themeColor);
+        overflow: hidden;
+        height: 0;
+        border-bottom: 0.2rem solid var(--themeColor);
+        transition: height 0.2s ease-out;
 
 		a {
 			display: block;
@@ -108,7 +115,7 @@ const currentPath = pathname.slice(1); // Removes the first "/"
 	}
 
 	.expanded {
-		display: unset;
+        height: 13rem;
 	}
 
 	@media screen and (0 < width < 80ch) {
@@ -121,12 +128,6 @@ const currentPath = pathname.slice(1); // Removes the first "/"
 
 	@media screen and (80ch < width) {
 		.nav-links {
-			margin-left: 2em;
-			display: block;
-			position: static;
-			width: auto;
-			background: none;
-
 			a {
 				display: inline-block;
 				padding: 0.75rem 1rem;
