@@ -1,7 +1,26 @@
 ---
 import BaseLayout from '../layouts/base_layout.astro';
-const pageTitle = "Better Noise Toys";
+const pageTitle = '';
 ---
+
 <BaseLayout pageTitle={pageTitle}>
-    <h2>My awesome blog subtitle</h2>
+	<h1>Get <span class="accent-color">BeNT</span>.</h1>
+	<p>
+		Better Noise Toys (<span class="accent-color">BeNT</span>) is a collective of artists,
+		musicians, mad scientists, and other fun lovers who want to create joy when crafting music. And
+		we accomplish this by releasing high quality effects, instruments, and synthesizers that either
+		provide you with better tools to more easily explore new sonic landscapes, or new sounds that
+		you can't obtain anywhere else.
+	</p>
+
+    <h2>Our Newest Toys</h2>
 </BaseLayout>
+
+<style>
+	h1 {
+		font-size: 3rem;
+		margin: none;
+		padding: none;
+		text-align: center;
+	}
+</style>

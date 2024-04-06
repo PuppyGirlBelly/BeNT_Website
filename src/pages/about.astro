@@ -25,10 +25,10 @@ const creators = [
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	<h2>Mad Scientists and Musicians creating <em>"Better Noise Toys"</em>!</h2>
+	<h2>Mad Scientists and Musicians creating "<em class="accent-color">Better Noise Toys</em>"!</h2>
 
 	<p>
-		Better Noise Toys (AKA: BeNT) is a collective and partnership based around musicians who want
+		Better Noise Toys (AKA: <span class="accent-color">BeNT</span>) is a collective and partnership based around musicians who want
 		new toys. Not just the same clones of Tube Screamers, Telecasters, or Moog Synths that everybody
 		else creates. So we create items that speak to us that don't exist already and speak to us
 		creatively. And we want to enable others to be creative as well! So we provide schematics,
@@ -45,7 +45,7 @@ const creators = [
 		{
 			creators.map((c) => (
 				<li>
-					<strong>{c.nickname}</strong> (<em>{c.pronouns}</em>) — {c.biography}
+					<strong>{c.nickname}</strong> (<em>{c.pronouns.join(' - ')}</em>) — {c.biography}
 				</li>
 			))
 		}
