@@ -6,6 +6,7 @@ import 'modern-normalize/modern-normalize.css';
 import '../styles/global.scss';
 let { pageTitle, themeColor } = Astro.props;
 themeColor = themeColor || '#009CBD';
+pageTitle = pageTitle.replace(/^[- ]*|[- ]*$/g, '');
 ---
 
 <html lang="en">
@@ -15,7 +16,7 @@ themeColor = themeColor || '#009CBD';
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
         <meta name="theme-color" content="{theme-color}" />
-		<title>{pageTitle} - Better Noise Toys</title>
+		<title>{pageTitle}</title>
         <ViewTransitions />
 		<style define:vars={ {themeColor} }>
 			h1 {
@@ -26,7 +27,7 @@ themeColor = themeColor || '#009CBD';
 	</head>
 	<body>
 		<Header themeColor={themeColor} />
-		<h1>{pageTitle}</h1>
+		{pageTitle && <h1>{pageTitle}</h1>}
         <main>
             <slot />
         </main>
